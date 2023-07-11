@@ -1,0 +1,3862 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "OpenAPI v2",
+    "version": "OpenAPIv2"
+  },
+  "paths": {
+    "/api/v2/companies": {
+      "get": {
+        "tags": [
+          "Companies"
+        ],
+        "summary": "Получение списка компаний",
+        "parameters": [
+          {
+            "name": "type",
+            "in": "query",
+            "schema": {
+              "$ref": "#/components/schemas/CompanyType"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/CompanyResponseDto"
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "400": {
+            "description": "Bad Request"
+          }
+        },
+        "security": [
+          {
+            "Bearer": [ ]
+          }
+        ]
+      }
+    },
+    "/api/v2/companies/{id}": {
+      "get": {
+        "tags": [
+          "Companies"
+        ],
+        "summary": "Получение компании по id в системе Pooling",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CompanyResponseDto"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "security": [
+          {
+            "Bearer": [ ]
+          }
+        ]
+      }
+    },
+    "/api/v2/companies/foreign-id/{foreignId}": {
+      "get": {
+        "tags": [
+          "Companies"
+        ],
+        "summary": "Получение компании по foreignId (id компании в системе пользователя)",
+        "parameters": [
+          {
+            "name": "foreignId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CompanyResponseDto"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "security": [
+          {
+            "Bearer": [ ]
+          }
+        ]
+      }
+    },
+    "/api/v2/companies/my": {
+      "get": {
+        "tags": [
+          "Companies"
+        ],
+        "summary": "Получение информации о своей компании",
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CompanyResponseDto"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        },
+        "security": [
+          {
+            "Bearer": [ ]
+          }
+        ]
+      }
+    },
+    "/api/v2/companies/pallet-types/{carrierId}": {
+      "get": {
+        "tags": [
+          "Companies"
+        ],
+        "summary": "Получение списка доступных типов паллет для бронирования по id перевозчика в системе Pooling",
+        "parameters": [
+          {
+            "name": "carrierId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/EnumResponseDto"
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        },
+        "security": [
+          {
+            "Bearer": [ ]
+          }
+        ]
+      }
+    },
+    "/api/v2/companies/pallet-types/foreign-id/{foreignId}": {
+      "get": {
+        "tags": [
+          "Companies"
+        ],
+        "summary": "Получение списка доступных типов паллет для бронирования по foreignId перевозчика (id компании в системе пользователя)",
+        "parameters": [
+          {
+            "name": "foreignId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/EnumResponseDto"
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        },
+        "security": [
+          {
+            "Bearer": [ ]
+          }
+        ]
+      }
+    },
+    "/api/v2/definitions/car-capacity-types": {
+      "get": {
+        "tags": [
+          "Definitions"
+        ],
+        "summary": "Получение списка грузоподъемностей",
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/EnumResponseDto"
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        },
+        "security": [
+          {
+            "Bearer": [ ]
+          }
+        ]
+      }
+    },
+    "/api/v2/definitions/car-types": {
+      "get": {
+        "tags": [
+          "Definitions"
+        ],
+        "summary": "Получение списка типов кузова",
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/EnumResponseDto"
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        },
+        "security": [
+          {
+            "Bearer": [ ]
+          }
+        ]
+      }
+    },
+    "/api/v2/definitions/company-types": {
+      "get": {
+        "tags": [
+          "Definitions"
+        ],
+        "summary": "Получение списка типов компаний",
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/EnumResponseDto"
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        },
+        "security": [
+          {
+            "Bearer": [ ]
+          }
+        ]
+      }
+    },
+    "/api/v2/definitions/order-types": {
+      "get": {
+        "tags": [
+          "Definitions"
+        ],
+        "summary": "Получение списка типов заказа",
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/EnumResponseDto"
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        },
+        "security": [
+          {
+            "Bearer": [ ]
+          }
+        ]
+      }
+    },
+    "/api/v2/definitions/pallet-types": {
+      "get": {
+        "tags": [
+          "Definitions"
+        ],
+        "summary": "Получение списка типов паллет",
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/EnumResponseDto"
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        },
+        "security": [
+          {
+            "Bearer": [ ]
+          }
+        ]
+      }
+    },
+    "/api/v2/definitions/product-types": {
+      "get": {
+        "tags": [
+          "Definitions"
+        ],
+        "summary": "Получение списка типов грузов",
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/EnumResponseDto"
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        },
+        "security": [
+          {
+            "Bearer": [ ]
+          }
+        ]
+      }
+    },
+    "/api/v2/definitions/reservation-statuses": {
+      "get": {
+        "tags": [
+          "Definitions"
+        ],
+        "summary": "Получение списка статусов бронирования",
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/EnumResponseDto"
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        },
+        "security": [
+          {
+            "Bearer": [ ]
+          }
+        ]
+      }
+    },
+    "/api/v2/definitions/reservation-types": {
+      "get": {
+        "tags": [
+          "Definitions"
+        ],
+        "summary": "Получение списка типов бронирования",
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/EnumResponseDto"
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        },
+        "security": [
+          {
+            "Bearer": [ ]
+          }
+        ]
+      }
+    },
+    "/api/v2/definitions/shipping-types": {
+      "get": {
+        "tags": [
+          "Definitions"
+        ],
+        "summary": "Получение списка типов доставки",
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/EnumResponseDto"
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        },
+        "security": [
+          {
+            "Bearer": [ ]
+          }
+        ]
+      }
+    },
+    "/api/v2/definitions/warehouse-types": {
+      "get": {
+        "tags": [
+          "Definitions"
+        ],
+        "summary": "Получение списка типов складов",
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/EnumResponseDto"
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        },
+        "security": [
+          {
+            "Bearer": [ ]
+          }
+        ]
+      }
+    },
+    "/api/v2/regions": {
+      "get": {
+        "tags": [
+          "Regions"
+        ],
+        "summary": "Получение списка регионов",
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/RegionResponseDto"
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        },
+        "security": [
+          {
+            "Bearer": [ ]
+          }
+        ]
+      }
+    },
+    "/api/v2/regions/{id}": {
+      "get": {
+        "tags": [
+          "Regions"
+        ],
+        "summary": "Получение региона по id в системе Pooling",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RegionResponseDto"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "security": [
+          {
+            "Bearer": [ ]
+          }
+        ]
+      }
+    },
+    "/api/v2/regions/code/{code}": {
+      "get": {
+        "tags": [
+          "Regions"
+        ],
+        "summary": "Получение региона по коду РФ",
+        "parameters": [
+          {
+            "name": "code",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RegionResponseDto"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "security": [
+          {
+            "Bearer": [ ]
+          }
+        ]
+      }
+    },
+    "/api/v2/reservations": {
+      "get": {
+        "tags": [
+          "Reservations"
+        ],
+        "parameters": [
+          {
+            "name": "loadingDateFrom",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "format": "date",
+              "nullable": true
+            },
+            "example": "2020-12-30"
+          },
+          {
+            "name": "loadingDateTo",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "format": "date",
+              "nullable": true
+            },
+            "example": "2020-12-30"
+          },
+          {
+            "name": "unloadingDateFrom",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "format": "date",
+              "nullable": true
+            },
+            "example": "2020-12-30"
+          },
+          {
+            "name": "unloadingDateTo",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "format": "date",
+              "nullable": true
+            },
+            "example": "2020-12-30"
+          },
+          {
+            "name": "slotId",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "format": "24-digit hex string"
+            },
+            "example": "000000000000000000000000"
+          },
+          {
+            "name": "status",
+            "in": "query",
+            "schema": {
+              "$ref": "#/components/schemas/ReservationStatus"
+            }
+          },
+          {
+            "name": "carrierId",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "format": "24-digit hex string"
+            },
+            "example": "000000000000000000000000"
+          },
+          {
+            "name": "carrierForeignId",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "nullable": true
+            }
+          },
+          {
+            "name": "consignorId",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "format": "24-digit hex string"
+            },
+            "example": "000000000000000000000000"
+          },
+          {
+            "name": "consignorForeignId",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "nullable": true
+            }
+          },
+          {
+            "name": "clientId",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "format": "24-digit hex string"
+            },
+            "example": "000000000000000000000000"
+          },
+          {
+            "name": "clientForeignId",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "nullable": true
+            }
+          },
+          {
+            "name": "shippingRegionId",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "format": "24-digit hex string"
+            },
+            "example": "000000000000000000000000"
+          },
+          {
+            "name": "shippingRegionCode",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "nullable": true
+            }
+          },
+          {
+            "name": "loadingWarehouseId",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "format": "24-digit hex string"
+            },
+            "example": "000000000000000000000000"
+          },
+          {
+            "name": "loadingWarehouseForeignId",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "nullable": true
+            }
+          },
+          {
+            "name": "unloadingWarehouseId",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "format": "24-digit hex string"
+            },
+            "example": "000000000000000000000000"
+          },
+          {
+            "name": "unloadingWarehouseForeignId",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "nullable": true
+            }
+          },
+          {
+            "name": "productType",
+            "in": "query",
+            "schema": {
+              "$ref": "#/components/schemas/ProductType"
+            }
+          },
+          {
+            "name": "carType",
+            "in": "query",
+            "schema": {
+              "$ref": "#/components/schemas/CarType"
+            }
+          },
+          {
+            "name": "shippingType",
+            "in": "query",
+            "schema": {
+              "$ref": "#/components/schemas/ShippingType"
+            }
+          },
+          {
+            "name": "serviceNeeded",
+            "in": "query",
+            "schema": {
+              "$ref": "#/components/schemas/ReservationService"
+            }
+          },
+          {
+            "name": "service",
+            "in": "query",
+            "schema": {
+              "$ref": "#/components/schemas/ReservationService"
+            }
+          },
+          {
+            "name": "orderNumber",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "nullable": true
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/ReservationResponseDto"
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        },
+        "security": [
+          {
+            "Bearer": [ ]
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "Reservations"
+        ],
+        "summary": "Создание бронирования",
+        "requestBody": {
+          "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "$ref": "#/components/schemas/ReservationRequestDto"
+              }
+            },
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ReservationRequestDto"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ReservationRequestDto"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/ReservationRequestDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ReservationResponseDto"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "503": {
+            "description": "Service Unavailable"
+          }
+        },
+        "security": [
+          {
+            "Bearer": [ ]
+          }
+        ]
+      }
+    },
+    "/api/v2/reservations/{id}": {
+      "get": {
+        "tags": [
+          "Reservations"
+        ],
+        "summary": "Просмотр информации о бронировании",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ReservationResponseDto"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "503": {
+            "description": "Service Unavailable"
+          }
+        },
+        "security": [
+          {
+            "Bearer": [ ]
+          }
+        ]
+      },
+      "put": {
+        "tags": [
+          "Reservations"
+        ],
+        "summary": "Изменение бронирования",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "$ref": "#/components/schemas/ReservationRequestDto"
+              }
+            },
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ReservationRequestDto"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ReservationRequestDto"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/ReservationRequestDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ReservationResponseDto"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "503": {
+            "description": "Service Unavailable"
+          }
+        },
+        "security": [
+          {
+            "Bearer": [ ]
+          }
+        ]
+      },
+      "delete": {
+        "tags": [
+          "Reservations"
+        ],
+        "summary": "Отмена бронирования",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ReservationResponseDto"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "503": {
+            "description": "Service Unavailable"
+          }
+        },
+        "security": [
+          {
+            "Bearer": [ ]
+          }
+        ]
+      }
+    },
+    "/api/v2/reservations/{id}/info": {
+      "put": {
+        "tags": [
+          "Reservations"
+        ],
+        "summary": "Изменение данных от ТК",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "$ref": "#/components/schemas/CarrierInfoRequestDto"
+              }
+            },
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CarrierInfoRequestDto"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CarrierInfoRequestDto"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/CarrierInfoRequestDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ReservationResponseDto"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "503": {
+            "description": "Service Unavailable"
+          }
+        },
+        "security": [
+          {
+            "Bearer": [ ]
+          }
+        ]
+      }
+    },
+    "/api/v2/reservations/{id}/point-status": {
+      "put": {
+        "tags": [
+          "Reservations"
+        ],
+        "summary": "Изменение статусов путевых точек бронирования от ТК",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/WaypointStatusRequestDto"
+                },
+                "nullable": true
+              }
+            },
+            "application/json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/WaypointStatusRequestDto"
+                },
+                "nullable": true
+              }
+            },
+            "text/json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/WaypointStatusRequestDto"
+                },
+                "nullable": true
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/WaypointStatusRequestDto"
+                },
+                "nullable": true
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ReservationResponseDto"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "503": {
+            "description": "Service Unavailable"
+          }
+        },
+        "security": [
+          {
+            "Bearer": [ ]
+          }
+        ]
+      }
+    },
+    "/api/v2/reservations/{id}/status": {
+      "put": {
+        "tags": [
+          "Reservations"
+        ],
+        "summary": "Изменение статуса",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "$ref": "#/components/schemas/StatusRequestDto"
+              }
+            },
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/StatusRequestDto"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/StatusRequestDto"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/StatusRequestDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ReservationResponseDto"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "503": {
+            "description": "Service Unavailable"
+          }
+        },
+        "security": [
+          {
+            "Bearer": [ ]
+          }
+        ]
+      }
+    },
+    "/api/v2/reservations/foreign-id/{foreignId}": {
+      "get": {
+        "tags": [
+          "Reservations"
+        ],
+        "summary": "Просмотр информации о бронировании по id в системе пользователя",
+        "parameters": [
+          {
+            "name": "foreignId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ReservationResponseDto"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "503": {
+            "description": "Service Unavailable"
+          }
+        },
+        "security": [
+          {
+            "Bearer": [ ]
+          }
+        ]
+      },
+      "put": {
+        "tags": [
+          "Reservations"
+        ],
+        "summary": "Изменение бронирования по id в системе пользователя",
+        "parameters": [
+          {
+            "name": "foreignId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "$ref": "#/components/schemas/ReservationRequestDto"
+              }
+            },
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ReservationRequestDto"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ReservationRequestDto"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/ReservationRequestDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ReservationResponseDto"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "503": {
+            "description": "Service Unavailable"
+          }
+        },
+        "security": [
+          {
+            "Bearer": [ ]
+          }
+        ]
+      },
+      "delete": {
+        "tags": [
+          "Reservations"
+        ],
+        "summary": "Отмена бронирования по id в системе пользователя",
+        "parameters": [
+          {
+            "name": "foreignId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ReservationResponseDto"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "503": {
+            "description": "Service Unavailable"
+          }
+        },
+        "security": [
+          {
+            "Bearer": [ ]
+          }
+        ]
+      }
+    },
+    "/api/v2/reservations/foreign-id/{foreignId}/info": {
+      "put": {
+        "tags": [
+          "Reservations"
+        ],
+        "summary": "Изменение данных от ТК по id в системе пользователя",
+        "parameters": [
+          {
+            "name": "foreignId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "$ref": "#/components/schemas/CarrierInfoRequestDto"
+              }
+            },
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CarrierInfoRequestDto"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CarrierInfoRequestDto"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/CarrierInfoRequestDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ReservationResponseDto"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "503": {
+            "description": "Service Unavailable"
+          }
+        },
+        "security": [
+          {
+            "Bearer": [ ]
+          }
+        ]
+      }
+    },
+    "/api/v2/reservations/foreign-id/{foreignId}/point-status": {
+      "put": {
+        "tags": [
+          "Reservations"
+        ],
+        "summary": "Изменение статусов путевых точек бронирования от ТК по id в системе пользователя",
+        "parameters": [
+          {
+            "name": "foreignId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/WaypointStatusRequestDto"
+                },
+                "nullable": true
+              }
+            },
+            "application/json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/WaypointStatusRequestDto"
+                },
+                "nullable": true
+              }
+            },
+            "text/json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/WaypointStatusRequestDto"
+                },
+                "nullable": true
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/WaypointStatusRequestDto"
+                },
+                "nullable": true
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ReservationResponseDto"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "503": {
+            "description": "Service Unavailable"
+          }
+        },
+        "security": [
+          {
+            "Bearer": [ ]
+          }
+        ]
+      }
+    },
+    "/api/v2/reservations/foreign-id/{foreignId}/status": {
+      "put": {
+        "tags": [
+          "Reservations"
+        ],
+        "summary": "Изменение статуса по id в системе пользователя",
+        "parameters": [
+          {
+            "name": "foreignId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "$ref": "#/components/schemas/StatusRequestDto"
+              }
+            },
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/StatusRequestDto"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/StatusRequestDto"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/StatusRequestDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ReservationResponseDto"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "503": {
+            "description": "Service Unavailable"
+          }
+        },
+        "security": [
+          {
+            "Bearer": [ ]
+          }
+        ]
+      }
+    },
+    "/api/v2/reservations/number/{number}": {
+      "get": {
+        "tags": [
+          "Reservations"
+        ],
+        "summary": "Просмотр информации о бронировании по номеру",
+        "parameters": [
+          {
+            "name": "number",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ReservationResponseDto"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "503": {
+            "description": "Service Unavailable"
+          }
+        },
+        "security": [
+          {
+            "Bearer": [ ]
+          }
+        ]
+      },
+      "put": {
+        "tags": [
+          "Reservations"
+        ],
+        "summary": "Изменение бронирования по номеру",
+        "parameters": [
+          {
+            "name": "number",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "$ref": "#/components/schemas/ReservationRequestDto"
+              }
+            },
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ReservationRequestDto"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ReservationRequestDto"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/ReservationRequestDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ReservationResponseDto"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "503": {
+            "description": "Service Unavailable"
+          }
+        },
+        "security": [
+          {
+            "Bearer": [ ]
+          }
+        ]
+      },
+      "delete": {
+        "tags": [
+          "Reservations"
+        ],
+        "summary": "Отмена бронирования по номеру",
+        "parameters": [
+          {
+            "name": "number",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ReservationResponseDto"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "503": {
+            "description": "Service Unavailable"
+          }
+        },
+        "security": [
+          {
+            "Bearer": [ ]
+          }
+        ]
+      }
+    },
+    "/api/v2/reservations/number/{number}/info": {
+      "put": {
+        "tags": [
+          "Reservations"
+        ],
+        "summary": "Изменение данных от ТК по номеру",
+        "parameters": [
+          {
+            "name": "number",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "$ref": "#/components/schemas/CarrierInfoRequestDto"
+              }
+            },
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CarrierInfoRequestDto"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CarrierInfoRequestDto"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/CarrierInfoRequestDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ReservationResponseDto"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "503": {
+            "description": "Service Unavailable"
+          }
+        },
+        "security": [
+          {
+            "Bearer": [ ]
+          }
+        ]
+      }
+    },
+    "/api/v2/reservations/number/{number}/point-status": {
+      "put": {
+        "tags": [
+          "Reservations"
+        ],
+        "summary": "Изменение статусов путевых точек бронирования от ТК по номеру",
+        "parameters": [
+          {
+            "name": "number",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/WaypointStatusRequestDto"
+                },
+                "nullable": true
+              }
+            },
+            "application/json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/WaypointStatusRequestDto"
+                },
+                "nullable": true
+              }
+            },
+            "text/json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/WaypointStatusRequestDto"
+                },
+                "nullable": true
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/WaypointStatusRequestDto"
+                },
+                "nullable": true
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ReservationResponseDto"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "503": {
+            "description": "Service Unavailable"
+          }
+        },
+        "security": [
+          {
+            "Bearer": [ ]
+          }
+        ]
+      }
+    },
+    "/api/v2/reservations/number/{number}/status": {
+      "put": {
+        "tags": [
+          "Reservations"
+        ],
+        "summary": "Изменение статуса по номеру",
+        "parameters": [
+          {
+            "name": "number",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "$ref": "#/components/schemas/StatusRequestDto"
+              }
+            },
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/StatusRequestDto"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/StatusRequestDto"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/StatusRequestDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ReservationResponseDto"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "503": {
+            "description": "Service Unavailable"
+          }
+        },
+        "security": [
+          {
+            "Bearer": [ ]
+          }
+        ]
+      }
+    },
+    "/api/v2/slots": {
+      "get": {
+        "tags": [
+          "Slots"
+        ],
+        "summary": "Получение массива слотов",
+        "parameters": [
+          {
+            "name": "consolidationDateFrom",
+            "in": "query",
+            "description": "Дата консолидации (с) - один из периодов дат должен быть заполнен и не должен превышать 31 день",
+            "schema": {
+              "type": "string",
+              "description": "Дата консолидации (с) - один из периодов дат должен быть заполнен и не должен превышать 31 день",
+              "format": "date",
+              "nullable": true
+            },
+            "example": "2020-12-30"
+          },
+          {
+            "name": "consolidationDateTo",
+            "in": "query",
+            "description": "Дата консолидации (по) - один из периодов дат должен быть заполнен и не должен превышать 31 день",
+            "schema": {
+              "type": "string",
+              "description": "Дата консолидации (по) - один из периодов дат должен быть заполнен и не должен превышать 31 день",
+              "format": "date",
+              "nullable": true
+            },
+            "example": "2020-12-30"
+          },
+          {
+            "name": "departureDateFrom",
+            "in": "query",
+            "description": "Дата отправки (с) - один из периодов дат должен быть заполнен и не должен превышать 31 день",
+            "schema": {
+              "type": "string",
+              "description": "Дата отправки (с) - один из периодов дат должен быть заполнен и не должен превышать 31 день",
+              "format": "date",
+              "nullable": true
+            },
+            "example": "2020-12-30"
+          },
+          {
+            "name": "departureDateTo",
+            "in": "query",
+            "description": "Дата отправки (по) - один из периодов дат должен быть заполнен и не должен превышать 31 день",
+            "schema": {
+              "type": "string",
+              "description": "Дата отправки (по) - один из периодов дат должен быть заполнен и не должен превышать 31 день",
+              "format": "date",
+              "nullable": true
+            },
+            "example": "2020-12-30"
+          },
+          {
+            "name": "deliveryDateFrom",
+            "in": "query",
+            "description": "Дата доставки (с) - один из периодов дат должен быть заполнен и не должен превышать 31 день",
+            "schema": {
+              "type": "string",
+              "description": "Дата доставки (с) - один из периодов дат должен быть заполнен и не должен превышать 31 день",
+              "format": "date",
+              "nullable": true
+            },
+            "example": "2020-12-30"
+          },
+          {
+            "name": "deliveryDateTo",
+            "in": "query",
+            "description": "Дата доставки (по) - один из периодов дат должен быть заполнен и не должен превышать 31 день",
+            "schema": {
+              "type": "string",
+              "description": "Дата доставки (по) - один из периодов дат должен быть заполнен и не должен превышать 31 день",
+              "format": "date",
+              "nullable": true
+            },
+            "example": "2020-12-30"
+          },
+          {
+            "name": "onlyAvailable",
+            "in": "query",
+            "description": "Если true показывает только доступные для бронирования слоты",
+            "schema": {
+              "type": "boolean",
+              "description": "Если true показывает только доступные для бронирования слоты"
+            }
+          },
+          {
+            "name": "shippingRegionId",
+            "in": "query",
+            "description": "Идентификатор региона отправки в системе Pooling",
+            "schema": {
+              "type": "string",
+              "format": "24-digit hex string"
+            },
+            "example": "000000000000000000000000"
+          },
+          {
+            "name": "shippingRegionCode",
+            "in": "query",
+            "description": "Код региона/субъекта отправки по ISO 3166-2 (игнорируется если заполнен ShippingRegionId)",
+            "schema": {
+              "type": "string",
+              "description": "Код региона/субъекта отправки по ISO 3166-2 (игнорируется если заполнен ShippingRegionId)",
+              "nullable": true
+            }
+          },
+          {
+            "name": "carrierId",
+            "in": "query",
+            "description": "Идентификатор перевозчика в системе Pooling",
+            "schema": {
+              "type": "string",
+              "format": "24-digit hex string"
+            },
+            "example": "000000000000000000000000"
+          },
+          {
+            "name": "carrierForeignId",
+            "in": "query",
+            "description": "Идентификатор перевозчика в системе пользователя (игнорируется если заполнен CarrierId)",
+            "schema": {
+              "type": "string",
+              "description": "Идентификатор перевозчика в системе пользователя (игнорируется если заполнен CarrierId)",
+              "nullable": true
+            }
+          },
+          {
+            "name": "clientId",
+            "in": "query",
+            "description": "Идентификатор клиента в системе Pooling",
+            "schema": {
+              "type": "string",
+              "format": "24-digit hex string"
+            },
+            "example": "000000000000000000000000"
+          },
+          {
+            "name": "clientForeignId",
+            "in": "query",
+            "description": "Идентификатор клиента в системе пользователя (игнорируется если заполнен ClientId)",
+            "schema": {
+              "type": "string",
+              "description": "Идентификатор клиента в системе пользователя (игнорируется если заполнен ClientId)",
+              "nullable": true
+            }
+          },
+          {
+            "name": "service",
+            "in": "query",
+            "description": "Фильтр по дополнительным сервисам",
+            "schema": {
+              "$ref": "#/components/schemas/ReservationService"
+            }
+          },
+          {
+            "name": "unloadingWarehouseId",
+            "in": "query",
+            "description": "Идентификатор склада доставки в системе Pooling",
+            "schema": {
+              "type": "string",
+              "format": "24-digit hex string"
+            },
+            "example": "000000000000000000000000"
+          },
+          {
+            "name": "unloadingWarehouseForeignId",
+            "in": "query",
+            "description": "Идентификатор склада доставки в системе пользователя (игнорируется если заполнен UnloadingWarehouseId)",
+            "schema": {
+              "type": "string",
+              "description": "Идентификатор склада доставки в системе пользователя (игнорируется если заполнен UnloadingWarehouseId)",
+              "nullable": true
+            }
+          },
+          {
+            "name": "carType",
+            "in": "query",
+            "schema": {
+              "$ref": "#/components/schemas/CarType"
+            }
+          },
+          {
+            "name": "productType",
+            "in": "query",
+            "schema": {
+              "$ref": "#/components/schemas/ProductType"
+            }
+          },
+          {
+            "name": "shippingTypes",
+            "in": "query",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/components/schemas/ShippingType"
+              },
+              "nullable": true
+            }
+          },
+          {
+            "name": "temperatureFrom",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "nullable": true
+            }
+          },
+          {
+            "name": "temperatureTo",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "nullable": true
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/SlotResponseDto"
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        },
+        "security": [
+          {
+            "Bearer": [ ]
+          }
+        ]
+      }
+    },
+    "/api/v2/slots/{id}": {
+      "get": {
+        "tags": [
+          "Slots"
+        ],
+        "summary": "Получение одного слота",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SlotResponseDto"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "security": [
+          {
+            "Bearer": [ ]
+          }
+        ]
+      }
+    },
+    "/api/v2/warehouses": {
+      "get": {
+        "tags": [
+          "Warehouses"
+        ],
+        "summary": "Получение списка складов",
+        "parameters": [
+          {
+            "name": "type",
+            "in": "query",
+            "description": "Тип склада (склад поставщика, транспортной компании и т.д.)",
+            "schema": {
+              "$ref": "#/components/schemas/WarehouseType"
+            }
+          },
+          {
+            "name": "companyId",
+            "in": "query",
+            "description": "Идентификатор компании в системе Pooling",
+            "schema": {
+              "type": "string",
+              "format": "24-digit hex string"
+            },
+            "example": "000000000000000000000000"
+          },
+          {
+            "name": "companyForeignId",
+            "in": "query",
+            "description": "Идентификатор компании в системе пользователя (игнорируется если заполнен CompanyId)",
+            "schema": {
+              "type": "string",
+              "description": "Идентификатор компании в системе пользователя (игнорируется если заполнен CompanyId)",
+              "nullable": true
+            }
+          },
+          {
+            "name": "regionId",
+            "in": "query",
+            "description": "Идентификатор региона в системе Pooling",
+            "schema": {
+              "type": "string",
+              "format": "24-digit hex string"
+            },
+            "example": "000000000000000000000000"
+          },
+          {
+            "name": "regionCode",
+            "in": "query",
+            "description": "Код региона/субъекта по ISO 3166-2 (игнорируется если заполнен RegionId)",
+            "schema": {
+              "type": "string",
+              "description": "Код региона/субъекта по ISO 3166-2 (игнорируется если заполнен RegionId)",
+              "nullable": true
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/WarehouseResponseDto"
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "400": {
+            "description": "Bad Request"
+          }
+        },
+        "security": [
+          {
+            "Bearer": [ ]
+          }
+        ]
+      }
+    },
+    "/api/v2/warehouses/{id}": {
+      "get": {
+        "tags": [
+          "Warehouses"
+        ],
+        "summary": "Получение склада по id в системе Pooling",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/WarehouseResponseDto"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "security": [
+          {
+            "Bearer": [ ]
+          }
+        ]
+      }
+    },
+    "/api/v2/warehouses/foreign-id/{foreignId}": {
+      "get": {
+        "tags": [
+          "Warehouses"
+        ],
+        "summary": "Получение склада по foreignId (id компании в системе пользователя)",
+        "parameters": [
+          {
+            "name": "foreignId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/WarehouseResponseDto"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "security": [
+          {
+            "Bearer": [ ]
+          }
+        ]
+      }
+    },
+    "/api/v2/warehouses/my": {
+      "get": {
+        "tags": [
+          "Warehouses"
+        ],
+        "summary": "Получение списка складов своей компании",
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/WarehouseResponseDto"
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        },
+        "security": [
+          {
+            "Bearer": [ ]
+          }
+        ]
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "CompanyType": {
+        "enum": [
+          "Client",
+          "Carrier",
+          "Consignor"
+        ],
+        "type": "string"
+      },
+      "CompanyResponseDto": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "24-digit hex string",
+            "example": "000000000000000000000000"
+          },
+          "foreignIds": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "nullable": true
+          },
+          "name": {
+            "type": "string",
+            "nullable": true
+          },
+          "type": {
+            "$ref": "#/components/schemas/CompanyType"
+          }
+        },
+        "additionalProperties": false
+      },
+      "EnumResponseDto": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "nullable": true
+          },
+          "name": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "RegionResponseDto": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "24-digit hex string",
+            "example": "000000000000000000000000"
+          },
+          "code": {
+            "type": "string",
+            "nullable": true
+          },
+          "name": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "ReservationStatus": {
+        "enum": [
+          "Draft",
+          "OnConfirmation",
+          "Reserved",
+          "InProgress",
+          "Delivered",
+          "Canceled",
+          "CarrierCanceled",
+          "Deleted"
+        ],
+        "type": "string"
+      },
+      "ProductType": {
+        "enum": [
+          "Food",
+          "NonFood",
+          "Alco",
+          "Fresh",
+          "Freeze"
+        ],
+        "type": "string"
+      },
+      "CarType": {
+        "enum": [
+          "Tent",
+          "Ref",
+          "Isotherm"
+        ],
+        "type": "string"
+      },
+      "ShippingType": {
+        "enum": [
+          "LTL",
+          "FTL",
+          "Pooling",
+          "Supplement"
+        ],
+        "type": "string"
+      },
+      "ReservationService": {
+        "enum": [
+          "Basic",
+          "MilkRun",
+          "WithSupplement"
+        ],
+        "type": "string"
+      },
+      "IdWithForeignId": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "24-digit hex string",
+            "example": "000000000000000000000000"
+          },
+          "foreignId": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "PalletType": {
+        "enum": [
+          "Euro",
+          "High",
+          "Low",
+          "Oversized",
+          "Mixed"
+        ],
+        "type": "string"
+      },
+      "UnitsDto": {
+        "type": "object",
+        "properties": {
+          "palletType": {
+            "$ref": "#/components/schemas/PalletType"
+          },
+          "positionFrom": {
+            "type": "integer",
+            "description": "Позиция груза с",
+            "format": "int32",
+            "nullable": true
+          },
+          "positionTo": {
+            "type": "integer",
+            "description": "Позиция груза по",
+            "format": "int32",
+            "nullable": true
+          },
+          "pallets": {
+            "type": "integer",
+            "description": "Евро-паллеты (шт)",
+            "format": "int32",
+            "nullable": true
+          },
+          "boxes": {
+            "type": "integer",
+            "description": "Короба (шт)",
+            "format": "int32",
+            "nullable": true
+          },
+          "weight": {
+            "type": "number",
+            "description": "Вес (кг)",
+            "format": "double",
+            "nullable": true
+          },
+          "cost": {
+            "type": "number",
+            "description": "Цена (руб)",
+            "format": "double",
+            "nullable": true
+          },
+          "volume": {
+            "type": "number",
+            "description": "Объем (м^3)",
+            "format": "double",
+            "nullable": true
+          },
+          "length": {
+            "type": "number",
+            "description": "Длина (м)",
+            "format": "double",
+            "nullable": true
+          },
+          "width": {
+            "type": "number",
+            "description": "Ширина (м)",
+            "format": "double",
+            "nullable": true
+          },
+          "height": {
+            "type": "number",
+            "description": "Высота (м)",
+            "format": "double",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "OrderType": {
+        "enum": [
+          "None",
+          "Stock",
+          "Transit",
+          "Wholesale",
+          "Retail",
+          "StockAction",
+          "TransitAction",
+          "WholesaleAction",
+          "RetailAction",
+          "Action"
+        ],
+        "type": "string"
+      },
+      "OrderDto": {
+        "required": [
+          "number"
+        ],
+        "type": "object",
+        "properties": {
+          "number": {
+            "type": "string",
+            "description": "Номер заказа"
+          },
+          "waybillNumber": {
+            "type": "string",
+            "description": "Номер накладной",
+            "nullable": true
+          },
+          "consignorNumber": {
+            "type": "string",
+            "description": "Номер заказа грузоотправителя",
+            "nullable": true
+          },
+          "type": {
+            "$ref": "#/components/schemas/OrderType"
+          },
+          "units": {
+            "$ref": "#/components/schemas/UnitsDto"
+          }
+        },
+        "additionalProperties": false
+      },
+      "FromToDateWithTime": {
+        "type": "object",
+        "properties": {
+          "from": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true,
+            "example": "2020-12-30T08:02:29"
+          },
+          "to": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true,
+            "example": "2020-12-30T08:02:29"
+          }
+        },
+        "additionalProperties": false
+      },
+      "AddressDto": {
+        "required": [
+          "house",
+          "postalCode",
+          "region",
+          "street"
+        ],
+        "type": "object",
+        "properties": {
+          "gln": {
+            "pattern": "^\\d{13}$",
+            "type": "string",
+            "nullable": true
+          },
+          "fullAddress": {
+            "type": "string",
+            "nullable": true
+          },
+          "postalCode": {
+            "type": "string"
+          },
+          "region": {
+            "type": "string"
+          },
+          "area": {
+            "type": "string",
+            "nullable": true
+          },
+          "city": {
+            "type": "string",
+            "nullable": true
+          },
+          "cityDistrict": {
+            "type": "string",
+            "nullable": true
+          },
+          "settlement": {
+            "type": "string",
+            "nullable": true
+          },
+          "street": {
+            "type": "string"
+          },
+          "house": {
+            "type": "string"
+          },
+          "block": {
+            "type": "string",
+            "nullable": true
+          },
+          "flat": {
+            "type": "string",
+            "nullable": true
+          },
+          "fiasId": {
+            "pattern": "(^$)|(^[0-9a-f]{8}-[0-9a-f]{4}-[0-5][0-9a-f]{3}-[089ab][0-9a-f]{3}-[0-9a-f]{12}$)",
+            "type": "string",
+            "nullable": true
+          },
+          "fiasCode": {
+            "pattern": "(^$)|(^\\d{19}$)|(^\\d{23}$)|(^\\d{27}$)",
+            "type": "string",
+            "nullable": true
+          },
+          "fiasActualityState": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "kladrId": {
+            "pattern": "(^$)|(^\\d{13}$)|(^\\d{17}$)|(^\\d{19}$)|(^\\d{23}$)",
+            "type": "string",
+            "nullable": true
+          },
+          "comment": {
+            "type": "string",
+            "nullable": true
+          },
+          "companyName": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "WaypointStatus": {
+        "enum": [
+          "Scheduled",
+          "Appointed",
+          "Arrived",
+          "Departed"
+        ],
+        "type": "string"
+      },
+      "WaypointResponseDto": {
+        "required": [
+          "dateTime"
+        ],
+        "type": "object",
+        "properties": {
+          "dateTime": {
+            "$ref": "#/components/schemas/FromToDateWithTime"
+          },
+          "orderNumbers": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Список номеров заказов загружаемых/выгружаемых в этой точке",
+            "nullable": true
+          },
+          "warehouse": {
+            "$ref": "#/components/schemas/IdWithForeignId"
+          },
+          "address": {
+            "$ref": "#/components/schemas/AddressDto"
+          },
+          "status": {
+            "$ref": "#/components/schemas/WaypointStatus"
+          },
+          "dateTimeArrived": {
+            "type": "string",
+            "description": "Фактическая дата и время события “машина приехала”",
+            "format": "date-time",
+            "nullable": true,
+            "example": "2020-12-30T08:02:29"
+          },
+          "dateTimeDeparted": {
+            "type": "string",
+            "description": "Фактическая дата и время события “машина уехала”",
+            "format": "date-time",
+            "nullable": true,
+            "example": "2020-12-30T08:02:29"
+          }
+        },
+        "additionalProperties": false
+      },
+      "Int32NullableFromToDto": {
+        "type": "object",
+        "properties": {
+          "from": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "to": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "CommentCompanyInfo": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "24-digit hex string",
+            "example": "000000000000000000000000"
+          },
+          "foreignId": {
+            "type": "string",
+            "nullable": true
+          },
+          "type": {
+            "$ref": "#/components/schemas/CompanyType"
+          }
+        },
+        "additionalProperties": false
+      },
+      "CommentInfo": {
+        "type": "object",
+        "properties": {
+          "dateTime": {
+            "type": "string",
+            "format": "date-time",
+            "example": "2020-12-30T08:02:29"
+          },
+          "company": {
+            "$ref": "#/components/schemas/CommentCompanyInfo"
+          },
+          "comment": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "VehicleInfoDto": {
+        "required": [
+          "model",
+          "registrationNumber"
+        ],
+        "type": "object",
+        "properties": {
+          "registrationNumber": {
+            "type": "string"
+          },
+          "trailerRegistrationNumber": {
+            "type": "string",
+            "nullable": true
+          },
+          "model": {
+            "type": "string"
+          }
+        },
+        "additionalProperties": false
+      },
+      "PassportInfoOpenApiDto": {
+        "type": "object",
+        "properties": {
+          "series": {
+            "type": "string",
+            "description": "Серия",
+            "nullable": true
+          },
+          "number": {
+            "type": "string",
+            "description": "Номер",
+            "nullable": true
+          },
+          "issuedBy": {
+            "type": "string",
+            "description": "Кем выдан",
+            "nullable": true
+          },
+          "issuedDate": {
+            "type": "string",
+            "description": "Дата выдачи",
+            "format": "date",
+            "nullable": true,
+            "example": "2020-12-30"
+          }
+        },
+        "additionalProperties": false
+      },
+      "DriverInfoDto": {
+        "required": [
+          "name"
+        ],
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "phone": {
+            "type": "string",
+            "nullable": true
+          },
+          "passport": {
+            "$ref": "#/components/schemas/PassportInfoOpenApiDto"
+          }
+        },
+        "additionalProperties": false
+      },
+      "ReservationResponseDto": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "Идентификатор заявки в системе Pooling",
+            "format": "24-digit hex string",
+            "example": "000000000000000000000000"
+          },
+          "number": {
+            "type": "string",
+            "description": "Номер заявки в системе Pooling",
+            "nullable": true
+          },
+          "foreignId": {
+            "type": "string",
+            "description": "Идентификатор заявки в системе пользователя",
+            "nullable": true
+          },
+          "version": {
+            "type": "integer",
+            "description": "Порядковый номер версии (инкрементируется при изменении)",
+            "format": "int32"
+          },
+          "status": {
+            "$ref": "#/components/schemas/ReservationStatus"
+          },
+          "shippingType": {
+            "$ref": "#/components/schemas/ShippingType"
+          },
+          "slotId": {
+            "type": "string",
+            "description": "Идентификатор слота в системе Pooling",
+            "format": "24-digit hex string",
+            "example": "000000000000000000000000"
+          },
+          "carrier": {
+            "$ref": "#/components/schemas/IdWithForeignId"
+          },
+          "client": {
+            "$ref": "#/components/schemas/IdWithForeignId"
+          },
+          "consignor": {
+            "$ref": "#/components/schemas/IdWithForeignId"
+          },
+          "carType": {
+            "$ref": "#/components/schemas/CarType"
+          },
+          "carCapacityType": {
+            "type": "string",
+            "nullable": true
+          },
+          "productType": {
+            "$ref": "#/components/schemas/ProductType"
+          },
+          "units": {
+            "$ref": "#/components/schemas/UnitsDto"
+          },
+          "orders": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/OrderDto"
+            },
+            "description": "Список заказов",
+            "nullable": true
+          },
+          "loadingPoints": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/WaypointResponseDto"
+            },
+            "nullable": true
+          },
+          "unloadingPoints": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/WaypointResponseDto"
+            },
+            "nullable": true
+          },
+          "servicesNeeded": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ReservationService"
+            },
+            "nullable": true
+          },
+          "services": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ReservationService"
+            },
+            "nullable": true
+          },
+          "temperature": {
+            "$ref": "#/components/schemas/Int32NullableFromToDto"
+          },
+          "comments": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/CommentInfo"
+            },
+            "description": "Комментарии",
+            "nullable": true
+          },
+          "carriage": {
+            "type": "integer",
+            "description": "Car sequence number",
+            "format": "int32",
+            "nullable": true
+          },
+          "shippingCost": {
+            "type": "number",
+            "format": "double",
+            "nullable": true
+          },
+          "vehicle": {
+            "$ref": "#/components/schemas/VehicleInfoDto"
+          },
+          "driver": {
+            "$ref": "#/components/schemas/DriverInfoDto"
+          },
+          "unitsAvailable": {
+            "$ref": "#/components/schemas/UnitsDto"
+          },
+          "unitsAvailableMin": {
+            "$ref": "#/components/schemas/UnitsDto"
+          },
+          "editableUntil": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true,
+            "example": "2020-12-30T08:02:29"
+          }
+        },
+        "additionalProperties": false
+      },
+      "WaypointRequestDto": {
+        "required": [
+          "dateTime"
+        ],
+        "type": "object",
+        "properties": {
+          "dateTime": {
+            "$ref": "#/components/schemas/FromToDateWithTime"
+          },
+          "orderNumbers": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Список номеров заказов загружаемых/выгружаемых в этой точке",
+            "nullable": true
+          },
+          "warehouse": {
+            "$ref": "#/components/schemas/IdWithForeignId"
+          },
+          "address": {
+            "$ref": "#/components/schemas/AddressDto"
+          }
+        },
+        "additionalProperties": false
+      },
+      "ReservationRequestDto": {
+        "required": [
+          "loadingPoints",
+          "orders",
+          "productType"
+        ],
+        "type": "object",
+        "properties": {
+          "foreignId": {
+            "type": "string",
+            "description": "Идентификатор заявки в системе пользователя",
+            "nullable": true
+          },
+          "shippingType": {
+            "$ref": "#/components/schemas/ShippingType"
+          },
+          "slotId": {
+            "type": "string",
+            "description": "Идентификатор слота в системе Pooling",
+            "format": "24-digit hex string",
+            "example": "000000000000000000000000"
+          },
+          "carrier": {
+            "$ref": "#/components/schemas/IdWithForeignId"
+          },
+          "client": {
+            "$ref": "#/components/schemas/IdWithForeignId"
+          },
+          "carType": {
+            "$ref": "#/components/schemas/CarType"
+          },
+          "carCapacityType": {
+            "type": "string",
+            "nullable": true
+          },
+          "productType": {
+            "$ref": "#/components/schemas/ProductType"
+          },
+          "units": {
+            "$ref": "#/components/schemas/UnitsDto"
+          },
+          "orders": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/OrderDto"
+            },
+            "description": "Список заказов"
+          },
+          "loadingPoints": {
+            "minItems": 1,
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/WaypointRequestDto"
+            },
+            "description": "Список точек загрузки"
+          },
+          "unloadingPoints": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/WaypointRequestDto"
+            },
+            "description": "Список точек выгрузки",
+            "nullable": true
+          },
+          "servicesNeeded": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ReservationService"
+            },
+            "nullable": true
+          },
+          "temperature": {
+            "$ref": "#/components/schemas/Int32NullableFromToDto"
+          },
+          "comment": {
+            "type": "string",
+            "description": "Комментарий",
+            "nullable": true
+          },
+          "unitsAvailable": {
+            "$ref": "#/components/schemas/UnitsDto"
+          },
+          "unitsAvailableMin": {
+            "$ref": "#/components/schemas/UnitsDto"
+          }
+        },
+        "additionalProperties": false
+      },
+      "CarrierInfoRequestDto": {
+        "type": "object",
+        "properties": {
+          "vehicle": {
+            "$ref": "#/components/schemas/VehicleInfoDto"
+          },
+          "driver": {
+            "$ref": "#/components/schemas/DriverInfoDto"
+          },
+          "carriage": {
+            "type": "integer",
+            "description": "Car sequence number",
+            "format": "int32",
+            "nullable": true
+          },
+          "shippingCost": {
+            "type": "number",
+            "format": "double",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "WaypointType": {
+        "enum": [
+          "Loading",
+          "Unloading"
+        ],
+        "type": "string"
+      },
+      "WaypointStatusRequestDto": {
+        "required": [
+          "status"
+        ],
+        "type": "object",
+        "properties": {
+          "type": {
+            "$ref": "#/components/schemas/WaypointType"
+          },
+          "index": {
+            "type": "integer",
+            "description": "Индекс конкретной точки в массиве точек загрузки/выгрузки",
+            "format": "int32",
+            "nullable": true
+          },
+          "warehouse": {
+            "$ref": "#/components/schemas/IdWithForeignId"
+          },
+          "status": {
+            "$ref": "#/components/schemas/WaypointStatus"
+          },
+          "dateTimeArrived": {
+            "type": "string",
+            "description": "Фактическая дата и время события “машина приехала”",
+            "format": "date-time",
+            "nullable": true,
+            "example": "2020-12-30T08:02:29"
+          },
+          "dateTimeDeparted": {
+            "type": "string",
+            "description": "Фактическая дата и время события “машина уехала”",
+            "format": "date-time",
+            "nullable": true,
+            "example": "2020-12-30T08:02:29"
+          }
+        },
+        "additionalProperties": false
+      },
+      "StatusRequestDto": {
+        "type": "object",
+        "properties": {
+          "status": {
+            "$ref": "#/components/schemas/ReservationStatus"
+          },
+          "comment": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "IdWithCode": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "24-digit hex string",
+            "example": "000000000000000000000000"
+          },
+          "code": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "IdWithForeignIds": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "24-digit hex string",
+            "example": "000000000000000000000000"
+          },
+          "foreignIds": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "SlotResponseDto": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "24-digit hex string",
+            "example": "000000000000000000000000"
+          },
+          "availableUntil": {
+            "type": "string",
+            "format": "date-time",
+            "example": "2020-12-30T08:02:29"
+          },
+          "consolidationDate": {
+            "type": "string",
+            "format": "date",
+            "example": "2020-12-30"
+          },
+          "departureDate": {
+            "type": "string",
+            "format": "date",
+            "example": "2020-12-30"
+          },
+          "deliveryDate": {
+            "type": "string",
+            "format": "date",
+            "example": "2020-12-30"
+          },
+          "shippingRegion": {
+            "$ref": "#/components/schemas/IdWithCode"
+          },
+          "carrier": {
+            "$ref": "#/components/schemas/IdWithForeignIds"
+          },
+          "client": {
+            "$ref": "#/components/schemas/IdWithForeignIds"
+          },
+          "carType": {
+            "$ref": "#/components/schemas/CarType"
+          },
+          "productTypeBase": {
+            "$ref": "#/components/schemas/ProductType"
+          },
+          "productTypes": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ProductType"
+            },
+            "nullable": true
+          },
+          "loadingWarehouses": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/IdWithForeignIds"
+            },
+            "nullable": true
+          },
+          "unloadingWarehouse": {
+            "$ref": "#/components/schemas/IdWithForeignIds"
+          },
+          "price": {
+            "type": "number",
+            "format": "double"
+          },
+          "shippingType": {
+            "$ref": "#/components/schemas/ShippingType"
+          },
+          "services": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ReservationService"
+            },
+            "description": "Дополнительные сервисы, которые доступны по данному слоту",
+            "nullable": true
+          },
+          "temperature": {
+            "$ref": "#/components/schemas/Int32NullableFromToDto"
+          },
+          "poolingCount": {
+            "type": "integer",
+            "description": "Количество паллет, при котором пулинг считается набранным",
+            "format": "int32"
+          },
+          "units": {
+            "$ref": "#/components/schemas/UnitsDto"
+          },
+          "unitsAvailable": {
+            "$ref": "#/components/schemas/UnitsDto"
+          },
+          "unitsAvailableMin": {
+            "$ref": "#/components/schemas/UnitsDto"
+          },
+          "palletTypes": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/PalletType"
+            },
+            "description": "Доступные типы паллет",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "WarehouseType": {
+        "enum": [
+          "Consignor",
+          "Client",
+          "Carrier"
+        ],
+        "type": "string"
+      },
+      "AddressResponseDto": {
+        "type": "object",
+        "properties": {
+          "gln": {
+            "type": "string",
+            "nullable": true
+          },
+          "fullAddress": {
+            "type": "string",
+            "nullable": true
+          },
+          "postalCode": {
+            "type": "string",
+            "nullable": true
+          },
+          "region": {
+            "type": "string",
+            "nullable": true
+          },
+          "area": {
+            "type": "string",
+            "nullable": true
+          },
+          "city": {
+            "type": "string",
+            "nullable": true
+          },
+          "cityDistrict": {
+            "type": "string",
+            "nullable": true
+          },
+          "settlement": {
+            "type": "string",
+            "nullable": true
+          },
+          "street": {
+            "type": "string",
+            "nullable": true
+          },
+          "house": {
+            "type": "string",
+            "nullable": true
+          },
+          "block": {
+            "type": "string",
+            "nullable": true
+          },
+          "flat": {
+            "type": "string",
+            "nullable": true
+          },
+          "fiasId": {
+            "type": "string",
+            "nullable": true
+          },
+          "fiasCode": {
+            "type": "string",
+            "nullable": true
+          },
+          "kladrId": {
+            "type": "string",
+            "nullable": true
+          },
+          "comment": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "WarehouseResponseDto": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "24-digit hex string",
+            "example": "000000000000000000000000"
+          },
+          "foreignIds": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "nullable": true
+          },
+          "name": {
+            "type": "string",
+            "nullable": true
+          },
+          "type": {
+            "$ref": "#/components/schemas/WarehouseType"
+          },
+          "company": {
+            "$ref": "#/components/schemas/IdWithForeignIds"
+          },
+          "region": {
+            "$ref": "#/components/schemas/IdWithCode"
+          },
+          "address": {
+            "$ref": "#/components/schemas/AddressResponseDto"
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "securitySchemes": {
+      "Bearer": {
+        "type": "apiKey",
+        "description": "JWT Authorization header using the Bearer scheme. \r\n\r\n Enter 'Bearer' [space] and then your token in the text input below.\r\n\r\nExample: \"Bearer 12345abcdef\"",
+        "name": "Authorization",
+        "in": "header"
+      }
+    }
+  }
+}

@@ -1,0 +1,40 @@
+postman_tests:
+    variables:
+        collection: openapi/OpenAPI_v2.postman_collection.json
+    image: 
+        name: postman/newman
+        entrypoint: [""]
+    script:
+        - newman --version
+        - npm install -g newman-reporter-html
+        - newman run $collection -e environment/$env.postman_environment.json -g environment/workspace.postman_globals.json --reporters cli,html,junit --reporter-html-export report.html --reporter-junit-export report.xml --color off
+    artifacts:
+        when: always
+        paths:
+            - report.html
+        reports:
+            junit: report.xml
+    only:
+      variables:
+        - $env
+    tags:
+      - docker
+swagger_diff:
+    image: 
+        name: openapitools/openapi-diff
+        entrypoint: [""]
+    script:
+        - java -jar /app/openapi-diff.jar --html OpenAPIv2Report.html https://stage.pooling.artlogics.ru/swagger/OpenAPIv2/swagger.json https://$env.pooling.artlogics.ru/swagger/OpenAPIv2/swagger.json
+        - java -jar /app/openapi-diff.jar --html OpenAPIReport.html https://stage.pooling.artlogics.ru/swagger/OpenAPI/swagger.json https://$env.pooling.artlogics.ru/swagger/OpenAPI/swagger.json
+        - java -jar /app/openapi-diff.jar --html APIReport.html https://stage.pooling.artlogics.ru/swagger/API/swagger.json https://$env.pooling.artlogics.ru/swagger/API/swagger.json
+    artifacts:
+        when: always
+        paths:
+            - OpenAPIv2Report.html
+            - OpenAPIReport.html
+            - APIReport.html
+    only:
+      variables:
+        - $env
+    tags:
+      - docker

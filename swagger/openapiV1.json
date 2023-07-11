@@ -1,0 +1,1614 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "OpenAPI v1 [deprecated]",
+    "description": "Old and deprecated version of API. Please use v2",
+    "version": "OpenAPI"
+  },
+  "paths": {
+    "/api/v1/client/requests": {
+      "post": {
+        "tags": [
+          "Client"
+        ],
+        "summary": "Загрузка данных по заявкам (чипинг)",
+        "requestBody": {
+          "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/UploadRequestDto"
+                },
+                "nullable": true
+              }
+            },
+            "application/json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/UploadRequestDto"
+                },
+                "nullable": true
+              }
+            },
+            "text/json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/UploadRequestDto"
+                },
+                "nullable": true
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/UploadRequestDto"
+                },
+                "nullable": true
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        },
+        "security": [
+          {
+            "Bearer": [ ]
+          }
+        ]
+      }
+    },
+    "/api/v1/definitions/car-types-all": {
+      "get": {
+        "tags": [
+          "Definitions"
+        ],
+        "summary": "Типы кузова",
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/EnumResponseDto"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/EnumResponseDto"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/EnumResponseDto"
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        },
+        "security": [
+          {
+            "Bearer": [ ]
+          }
+        ]
+      }
+    },
+    "/api/v1/definitions/clients": {
+      "get": {
+        "tags": [
+          "Definitions"
+        ],
+        "summary": "Клиенты",
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": { }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": { }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": { }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        },
+        "security": [
+          {
+            "Bearer": [ ]
+          }
+        ]
+      }
+    },
+    "/api/v1/definitions/companies": {
+      "get": {
+        "tags": [
+          "Definitions"
+        ],
+        "summary": "Транспортные компании",
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/PersistableData"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/PersistableData"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/PersistableData"
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        },
+        "security": [
+          {
+            "Bearer": [ ]
+          }
+        ]
+      }
+    },
+    "/api/v1/definitions/product-types": {
+      "get": {
+        "tags": [
+          "Definitions"
+        ],
+        "summary": "Типы продуктов",
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/EnumResponseDto"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/EnumResponseDto"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/EnumResponseDto"
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        },
+        "security": [
+          {
+            "Bearer": [ ]
+          }
+        ]
+      }
+    },
+    "/api/v1/definitions/regions": {
+      "get": {
+        "tags": [
+          "Definitions"
+        ],
+        "summary": "Регионы отправки",
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/PersistableData"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/PersistableData"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/PersistableData"
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        },
+        "security": [
+          {
+            "Bearer": [ ]
+          }
+        ]
+      }
+    },
+    "/api/v1/definitions/warehouses": {
+      "get": {
+        "tags": [
+          "Definitions"
+        ],
+        "summary": "Склады компании",
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": { }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": { }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": { }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        },
+        "security": [
+          {
+            "Bearer": [ ]
+          }
+        ]
+      }
+    },
+    "/api/v1/reservation": {
+      "post": {
+        "tags": [
+          "Reservation"
+        ],
+        "summary": "Резервирование слота",
+        "requestBody": {
+          "description": "",
+          "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateReservationSlotRequestDto"
+              }
+            },
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateReservationSlotRequestDto"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateReservationSlotRequestDto"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateReservationSlotRequestDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ReservationSlotResponseDto"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ReservationSlotResponseDto"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ReservationSlotResponseDto"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        },
+        "security": [
+          {
+            "Bearer": [ ]
+          }
+        ]
+      },
+      "put": {
+        "tags": [
+          "Reservation"
+        ],
+        "summary": "Изменение бронирования",
+        "requestBody": {
+          "description": "",
+          "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateReservationSlotRequestDto"
+              }
+            },
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateReservationSlotRequestDto"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateReservationSlotRequestDto"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateReservationSlotRequestDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ReservationSlotResponseDto"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ReservationSlotResponseDto"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ReservationSlotResponseDto"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        },
+        "security": [
+          {
+            "Bearer": [ ]
+          }
+        ]
+      },
+      "delete": {
+        "tags": [
+          "Reservation"
+        ],
+        "summary": "Удаление бронирования",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "description": "",
+            "schema": {
+              "type": "string",
+              "description": "",
+              "nullable": true
+            }
+          },
+          {
+            "name": "number",
+            "in": "query",
+            "description": "",
+            "schema": {
+              "type": "string",
+              "description": "",
+              "nullable": true
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        },
+        "security": [
+          {
+            "Bearer": [ ]
+          }
+        ]
+      }
+    },
+    "/api/v1/slots": {
+      "get": {
+        "tags": [
+          "Slots"
+        ],
+        "summary": "Получение массива слотов",
+        "parameters": [
+          {
+            "name": "dateFrom",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "date"
+            },
+            "example": "2020-12-30"
+          },
+          {
+            "name": "dateTo",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "date"
+            },
+            "example": "2020-12-30"
+          },
+          {
+            "name": "deliveryDateFrom",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "format": "date",
+              "nullable": true
+            },
+            "example": "2020-12-30"
+          },
+          {
+            "name": "deliveryDateTo",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "format": "date",
+              "nullable": true
+            },
+            "example": "2020-12-30"
+          },
+          {
+            "name": "clientId",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "format": "24-digit hex string"
+            },
+            "example": "000000000000000000000000"
+          },
+          {
+            "name": "shippingRegionId",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "format": "24-digit hex string"
+            },
+            "example": "000000000000000000000000"
+          },
+          {
+            "name": "carrierId",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "format": "24-digit hex string"
+            },
+            "example": "000000000000000000000000"
+          },
+          {
+            "name": "carTypeId",
+            "in": "query",
+            "schema": {
+              "$ref": "#/components/schemas/CarType"
+            }
+          },
+          {
+            "name": "productTypeId",
+            "in": "query",
+            "schema": {
+              "$ref": "#/components/schemas/ProductType"
+            }
+          },
+          {
+            "name": "distributionCenterIds",
+            "in": "query",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "format": "24-digit hex string",
+                "example": "000000000000000000000000"
+              },
+              "nullable": true
+            }
+          },
+          {
+            "name": "isPooling",
+            "in": "query",
+            "schema": {
+              "type": "boolean",
+              "nullable": true
+            }
+          },
+          {
+            "name": "isAvailable",
+            "in": "query",
+            "schema": {
+              "type": "boolean"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/SlotsResponseDto"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/SlotsResponseDto"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/SlotsResponseDto"
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        },
+        "security": [
+          {
+            "Bearer": [ ]
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "Slots"
+        ],
+        "summary": "Устаревший метод получения массива слотов. Пожалуйста, используйте GET-метод",
+        "requestBody": {
+          "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "$ref": "#/components/schemas/SlotsRequestDto"
+              }
+            },
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SlotsRequestDto"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SlotsRequestDto"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/SlotsRequestDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/SlotsResponseDto"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/SlotsResponseDto"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/SlotsResponseDto"
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        },
+        "deprecated": true,
+        "security": [
+          {
+            "Bearer": [ ]
+          }
+        ]
+      }
+    },
+    "/api/v1/slots/{id}": {
+      "get": {
+        "tags": [
+          "Slots"
+        ],
+        "summary": "Получение одного слота",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/SlotResponseDto"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SlotResponseDto"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SlotResponseDto"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        },
+        "security": [
+          {
+            "Bearer": [ ]
+          }
+        ]
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "UploadRequestDto": {
+        "type": "object",
+        "properties": {
+          "consignorCode": {
+            "type": "string",
+            "nullable": true
+          },
+          "consignorName": {
+            "type": "string",
+            "nullable": true
+          },
+          "dcName": {
+            "type": "string",
+            "nullable": true
+          },
+          "gln": {
+            "type": "string",
+            "nullable": true
+          },
+          "orderDate": {
+            "type": "string",
+            "nullable": true
+          },
+          "deliveryDate": {
+            "type": "string",
+            "nullable": true
+          },
+          "orderNumber": {
+            "type": "string",
+            "nullable": true
+          },
+          "skuNumber": {
+            "type": "string",
+            "nullable": true
+          },
+          "palletCount": {
+            "type": "string",
+            "nullable": true
+          },
+          "boxCount": {
+            "type": "string",
+            "nullable": true
+          },
+          "weight": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "EnumResponseDto": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "nullable": true
+          },
+          "description": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "PersistableData": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "24-digit hex string",
+            "example": "000000000000000000000000"
+          },
+          "name": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "OrderType": {
+        "enum": [
+          "None",
+          "Stock",
+          "Transit",
+          "Wholesale",
+          "Retail",
+          "StockAction",
+          "TransitAction",
+          "WholesaleAction",
+          "RetailAction",
+          "Action"
+        ],
+        "type": "string"
+      },
+      "OrderDto": {
+        "required": [
+          "orderNumber",
+          "packingList"
+        ],
+        "type": "object",
+        "properties": {
+          "palletFrom": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "palletTo": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "palletCount": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "orderNumber": {
+            "type": "string"
+          },
+          "packingList": {
+            "type": "string"
+          },
+          "weight": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "cost": {
+            "type": "number",
+            "format": "double",
+            "nullable": true
+          },
+          "boxCount": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "type": {
+            "$ref": "#/components/schemas/OrderType"
+          }
+        },
+        "additionalProperties": false
+      },
+      "ProductType": {
+        "enum": [
+          "Food",
+          "NonFood",
+          "Alco",
+          "Fresh",
+          "Freeze"
+        ],
+        "type": "string"
+      },
+      "CreateReservationSlotRequestDto": {
+        "required": [
+          "palletCount",
+          "pickUpDateFrom",
+          "slotId"
+        ],
+        "type": "object",
+        "properties": {
+          "slotId": {
+            "type": "string",
+            "format": "24-digit hex string",
+            "example": "000000000000000000000000"
+          },
+          "pickUpDateFrom": {
+            "type": "string",
+            "format": "date-time",
+            "example": "2020-12-30T08:02:37"
+          },
+          "pickUpDateTo": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true,
+            "example": "2020-12-30T08:02:37"
+          },
+          "timeSlotFrom": {
+            "type": "string",
+            "format": "date-span",
+            "nullable": true
+          },
+          "timeSlotTo": {
+            "type": "string",
+            "format": "date-span",
+            "nullable": true
+          },
+          "warehouseId": {
+            "type": "string",
+            "format": "24-digit hex string",
+            "example": "000000000000000000000000"
+          },
+          "palletCount": {
+            "maximum": 1000,
+            "minimum": 1,
+            "type": "integer",
+            "format": "int32"
+          },
+          "boxCount": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "weight": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "cost": {
+            "type": "number",
+            "format": "double",
+            "nullable": true
+          },
+          "comment": {
+            "type": "string",
+            "nullable": true
+          },
+          "orders": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/OrderDto"
+            },
+            "nullable": true
+          },
+          "productTypeId": {
+            "$ref": "#/components/schemas/ProductType"
+          }
+        },
+        "additionalProperties": false
+      },
+      "ReservationSlotResponseDto": {
+        "type": "object",
+        "properties": {
+          "pickUpDateFrom": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true,
+            "example": "2020-12-30T08:02:37"
+          },
+          "pickUpDateTo": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true,
+            "example": "2020-12-30T08:02:37"
+          },
+          "consolidationDate": {
+            "type": "string",
+            "format": "date",
+            "example": "2020-12-30"
+          },
+          "availableUntil": {
+            "type": "string",
+            "format": "date-time",
+            "example": "2020-12-30T08:02:37"
+          },
+          "timeSlotFrom": {
+            "type": "string",
+            "format": "date-span",
+            "nullable": true
+          },
+          "timeSlotTo": {
+            "type": "string",
+            "format": "date-span",
+            "nullable": true
+          },
+          "id": {
+            "type": "string",
+            "format": "24-digit hex string",
+            "example": "000000000000000000000000"
+          },
+          "slotId": {
+            "type": "string",
+            "format": "24-digit hex string",
+            "example": "000000000000000000000000"
+          },
+          "warehouseId": {
+            "type": "string",
+            "format": "24-digit hex string",
+            "example": "000000000000000000000000"
+          },
+          "number": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "stringNumber": {
+            "type": "string",
+            "nullable": true
+          },
+          "palletCount": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "boxCount": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "weight": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "cost": {
+            "type": "number",
+            "format": "double",
+            "nullable": true
+          },
+          "comment": {
+            "type": "string",
+            "nullable": true
+          },
+          "orders": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/OrderDto"
+            },
+            "nullable": true
+          },
+          "productTypeId": {
+            "$ref": "#/components/schemas/ProductType"
+          }
+        },
+        "additionalProperties": false
+      },
+      "UpdateReservationSlotRequestDto": {
+        "required": [
+          "id",
+          "number"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "24-digit hex string",
+            "example": "000000000000000000000000"
+          },
+          "number": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "stringNumber": {
+            "type": "string",
+            "nullable": true
+          },
+          "pickUpDateFrom": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true,
+            "example": "2020-12-30T08:02:37"
+          },
+          "pickUpDateTo": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true,
+            "example": "2020-12-30T08:02:37"
+          },
+          "timeSlotFrom": {
+            "type": "string",
+            "format": "date-span",
+            "nullable": true
+          },
+          "timeSlotTo": {
+            "type": "string",
+            "format": "date-span",
+            "nullable": true
+          },
+          "warehouseId": {
+            "type": "string",
+            "format": "24-digit hex string",
+            "example": "000000000000000000000000"
+          },
+          "palletCount": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "boxCount": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "weight": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "cost": {
+            "type": "number",
+            "format": "double",
+            "nullable": true
+          },
+          "comment": {
+            "type": "string",
+            "nullable": true
+          },
+          "orders": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/OrderDto"
+            },
+            "nullable": true
+          },
+          "productTypeId": {
+            "$ref": "#/components/schemas/ProductType"
+          }
+        },
+        "additionalProperties": false
+      },
+      "CarType": {
+        "enum": [
+          "Tent",
+          "Ref",
+          "Isotherm"
+        ],
+        "type": "string"
+      },
+      "SlotsResponseDto": {
+        "type": "object",
+        "properties": {
+          "availableUntil": {
+            "type": "string",
+            "format": "date-time",
+            "example": "2020-12-30T08:02:37"
+          },
+          "deliveryDate": {
+            "type": "string",
+            "format": "date",
+            "example": "2020-12-30"
+          },
+          "consolidationDate": {
+            "type": "string",
+            "format": "date",
+            "example": "2020-12-30"
+          },
+          "id": {
+            "type": "string",
+            "format": "24-digit hex string",
+            "example": "000000000000000000000000"
+          },
+          "warehouseId": {
+            "type": "string",
+            "format": "24-digit hex string",
+            "example": "000000000000000000000000"
+          },
+          "shippingRegionId": {
+            "type": "string",
+            "format": "24-digit hex string",
+            "example": "000000000000000000000000"
+          },
+          "carrierId": {
+            "type": "string",
+            "format": "24-digit hex string",
+            "example": "000000000000000000000000"
+          },
+          "clientId": {
+            "type": "string",
+            "format": "24-digit hex string",
+            "example": "000000000000000000000000"
+          },
+          "carTypeId": {
+            "$ref": "#/components/schemas/CarType"
+          },
+          "productTypeId": {
+            "$ref": "#/components/schemas/ProductType"
+          },
+          "productTypeIds": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ProductType"
+            },
+            "nullable": true
+          },
+          "distributionCenterId": {
+            "type": "string",
+            "format": "24-digit hex string",
+            "example": "000000000000000000000000"
+          },
+          "palletCount": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "price": {
+            "type": "number",
+            "format": "double"
+          },
+          "isPooling": {
+            "type": "boolean"
+          }
+        },
+        "additionalProperties": false
+      },
+      "SlotsRequestDto": {
+        "required": [
+          "dateFrom",
+          "dateTo",
+          "shippingRegionId"
+        ],
+        "type": "object",
+        "properties": {
+          "dateFrom": {
+            "type": "string",
+            "format": "date",
+            "example": "2020-12-30"
+          },
+          "dateTo": {
+            "type": "string",
+            "format": "date",
+            "example": "2020-12-30"
+          },
+          "deliveryDateFrom": {
+            "type": "string",
+            "format": "date",
+            "nullable": true,
+            "example": "2020-12-30"
+          },
+          "deliveryDateTo": {
+            "type": "string",
+            "format": "date",
+            "nullable": true,
+            "example": "2020-12-30"
+          },
+          "clientId": {
+            "type": "string",
+            "format": "24-digit hex string",
+            "example": "000000000000000000000000"
+          },
+          "shippingRegionId": {
+            "type": "string",
+            "format": "24-digit hex string",
+            "example": "000000000000000000000000"
+          },
+          "carrierId": {
+            "type": "string",
+            "format": "24-digit hex string",
+            "example": "000000000000000000000000"
+          },
+          "carTypeId": {
+            "$ref": "#/components/schemas/CarType"
+          },
+          "productTypeId": {
+            "$ref": "#/components/schemas/ProductType"
+          },
+          "distributionCenterIds": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "format": "24-digit hex string",
+              "example": "000000000000000000000000"
+            },
+            "nullable": true
+          },
+          "isPooling": {
+            "type": "boolean",
+            "nullable": true
+          },
+          "isAvailable": {
+            "type": "boolean"
+          }
+        },
+        "additionalProperties": false
+      },
+      "ShippingType": {
+        "enum": [
+          "LTL",
+          "FTL",
+          "Pooling",
+          "Supplement"
+        ],
+        "type": "string"
+      },
+      "SlotOrderDto": {
+        "type": "object",
+        "properties": {
+          "palletFrom": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "palletTo": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "palletCount": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "orderNumber": {
+            "type": "string",
+            "nullable": true
+          },
+          "packingList": {
+            "type": "string",
+            "nullable": true
+          },
+          "weight": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "cost": {
+            "type": "number",
+            "format": "double",
+            "nullable": true
+          },
+          "boxCount": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "type": {
+            "$ref": "#/components/schemas/ShippingType"
+          }
+        },
+        "additionalProperties": false
+      },
+      "ReservationDto": {
+        "type": "object",
+        "properties": {
+          "pickUpDateFrom": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true,
+            "example": "2020-12-30T08:02:37"
+          },
+          "pickUpDateTo": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true,
+            "example": "2020-12-30T08:02:37"
+          },
+          "timeSlotFrom": {
+            "type": "string",
+            "format": "date-span",
+            "nullable": true
+          },
+          "timeSlotTo": {
+            "type": "string",
+            "format": "date-span",
+            "nullable": true
+          },
+          "availableUntil": {
+            "type": "string",
+            "format": "date-time",
+            "example": "2020-12-30T08:02:37"
+          },
+          "id": {
+            "type": "string",
+            "format": "24-digit hex string",
+            "example": "000000000000000000000000"
+          },
+          "number": {
+            "type": "string",
+            "nullable": true
+          },
+          "consignorCompanyCode": {
+            "type": "string",
+            "nullable": true
+          },
+          "warehouseId": {
+            "type": "string",
+            "format": "24-digit hex string",
+            "example": "000000000000000000000000"
+          },
+          "palletCount": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "weight": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "cost": {
+            "type": "number",
+            "format": "double",
+            "nullable": true
+          },
+          "boxCount": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "comment": {
+            "type": "string",
+            "nullable": true
+          },
+          "orders": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/SlotOrderDto"
+            },
+            "nullable": true
+          },
+          "productType": {
+            "$ref": "#/components/schemas/ProductType"
+          }
+        },
+        "additionalProperties": false
+      },
+      "SlotResponseDto": {
+        "type": "object",
+        "properties": {
+          "availableUntil": {
+            "type": "string",
+            "format": "date-time",
+            "example": "2020-12-30T08:02:37"
+          },
+          "deliveryDate": {
+            "type": "string",
+            "format": "date",
+            "example": "2020-12-30"
+          },
+          "consolidationDate": {
+            "type": "string",
+            "format": "date",
+            "example": "2020-12-30"
+          },
+          "reservation": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ReservationDto"
+            },
+            "nullable": true
+          },
+          "id": {
+            "type": "string",
+            "format": "24-digit hex string",
+            "example": "000000000000000000000000"
+          },
+          "shippingRegionId": {
+            "type": "string",
+            "format": "24-digit hex string",
+            "example": "000000000000000000000000"
+          },
+          "carrierId": {
+            "type": "string",
+            "format": "24-digit hex string",
+            "example": "000000000000000000000000"
+          },
+          "clientId": {
+            "type": "string",
+            "format": "24-digit hex string",
+            "example": "000000000000000000000000"
+          },
+          "carTypeId": {
+            "$ref": "#/components/schemas/CarType"
+          },
+          "productTypeId": {
+            "$ref": "#/components/schemas/ProductType"
+          },
+          "productTypeIds": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ProductType"
+            },
+            "nullable": true
+          },
+          "distributionCenterId": {
+            "type": "string",
+            "format": "24-digit hex string",
+            "example": "000000000000000000000000"
+          },
+          "warehouseId": {
+            "type": "string",
+            "format": "24-digit hex string",
+            "example": "000000000000000000000000"
+          },
+          "palletCount": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "price": {
+            "type": "number",
+            "format": "double"
+          },
+          "isPooling": {
+            "type": "boolean"
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "securitySchemes": {
+      "Bearer": {
+        "type": "apiKey",
+        "description": "JWT Authorization header using the Bearer scheme. \r\n\r\n Enter 'Bearer' [space] and then your token in the text input below.\r\n\r\nExample: \"Bearer 12345abcdef\"",
+        "name": "Authorization",
+        "in": "header"
+      }
+    }
+  }
+}

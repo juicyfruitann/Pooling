@@ -1,0 +1,119 @@
+{
+	"id": "6430513b-2a23-4873-8dc1-52f00ed690d9",
+	"values": [
+		{
+			"key": "_isContains",
+			"value": "(json, keyname, value) => {\n    if (json == null || typeof json !== 'object' || keyname == null || value == null) return false;\n    const isObjectAndNotArray = typeof json === 'object' && !Array.isArray(json);\n    if (isObjectAndNotArray && json[keyname] === value) return true;\n    return Object.keys(json).some(key =>\n        typeof json[key] === 'object'\n            ? _isContains(json[key], keyname, value)\n            : key === keyname && json[key] === value\n    );\n};",
+			"enabled": true
+		},
+		{
+			"key": "goPoolingOT",
+			"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI1ZmVhZWJiMjU2M2JhMTBkNzI3YjNlZDUiLCJ1c2VyTmFtZSI6ImF1dG90ZXN0cytHTytQb29saW5nQGRldmxvZ2ljcy5ydSIsImNvbXBhbnlJZCI6IjVjOTBlNDJmZWVhMjUyMTFkMGViNjhhYSIsIm9wZW5Ub2tlbklkIjoiNjBlYmU0Nzg3ZjRmNDgyM2ViNTQwYTcxIiwiaXNzIjoiUG9vbGluZyIsImF1ZCI6IkFjY2VzcyJ9.SZbMNFZ-gvvBrKVcjHSRSGIAv9oSMVO5akaxG19rES4",
+			"enabled": true
+		},
+		{
+			"key": "goTestoviyOT",
+			"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI1ZmVhZWJmZmEzM2ZmNzEyNjQzZjcwZjYiLCJ1c2VyTmFtZSI6ImF1dG90ZXN0cytHTytUZXN0b3ZpeUBkZXZsb2dpY3MucnUiLCJjb21wYW55SWQiOiI1YjA2YzViNzBjN2U2ZjY3NjRkNTBkMTMiLCJvcGVuVG9rZW5JZCI6IjYxNTlhMmYwYzk3NmM5OTM5MDUzNDllYSIsImlzcyI6IlBvb2xpbmciLCJhdWQiOiJBY2Nlc3MifQ.90al8Ak2IzJcMb_8TR2pGexvJfBz4iITLexfDeD0bZ0",
+			"enabled": true
+		},
+		{
+			"key": "goAdminRekitOT",
+			"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI1ZmVhZWQwNTUyNDMyN2U1N2E4YjRiNzciLCJ1c2VyTmFtZSI6ImF1dG90ZXN0cytHTytBZG1pbitSZWtpdEBkZXZsb2dpY3MucnUiLCJjb21wYW55SWQiOiI1YjA2YzViNzBjN2U2ZjY3NjRkNTBkMTAiLCJvcGVuVG9rZW5JZCI6IjYwZWJlNGVjN2Y0ZjQ4MjNlYjU0MGE3MyIsImlzcyI6IlBvb2xpbmciLCJhdWQiOiJBY2Nlc3MifQ.UlRBYReaD4VRicEP_ftwNSe4g_H1sQCnO5WWKDcj8fw",
+			"enabled": true
+		},
+		{
+			"key": "tkFmOT",
+			"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI1ZmVhZWMyOTQwNWYwY2M0ZWRjMWMxNGEiLCJ1c2VyTmFtZSI6ImF1dG90ZXN0cytUSytGTUBkZXZsb2dpY3MucnUiLCJjb21wYW55SWQiOiI1YjA2YzViNzBjN2U2ZjY3NjRkNTBkMGYiLCJvcGVuVG9rZW5JZCI6IjYwZWJlNTA2N2Y0ZjQ4MjNlYjU0MGE3NCIsImlzcyI6IlBvb2xpbmciLCJhdWQiOiJBY2Nlc3MifQ.KNi8ptkqYDDSt0FTaTdnvRsX6QN8L1RGu6W_HQ1aRvA",
+			"enabled": true
+		},
+		{
+			"key": "tkItekoOT",
+			"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI1ZmVhZWM0ZWEzM2ZmNzEyNjQzZjcwZjgiLCJ1c2VyTmFtZSI6ImF1dG90ZXN0cytUSytJdGVrb0BkZXZsb2dpY3MucnUiLCJjb21wYW55SWQiOiI1YmJmYzM5OWNlZTM4NTI5YWM1OTY4OTEiLCJvcGVuVG9rZW5JZCI6IjYwZWJlNTIzN2Y0ZjQ4MjNlYjU0MGE3NSIsImlzcyI6IlBvb2xpbmciLCJhdWQiOiJBY2Nlc3MifQ.Vd6E0v7FYQT7Kz70ocjRRUcBd4wRBcd2_r0LnWYMhgo",
+			"enabled": true
+		},
+		{
+			"key": "tsTanderOT",
+			"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI1ZmVhZWM4NGEzM2ZmNzEyNjQzZjcwZmIiLCJ1c2VyTmFtZSI6ImF1dG90ZXN0cytUQytUYW5kZXJAZGV2bG9naWNzLnJ1IiwiY29tcGFueUlkIjoiNWIwNmM1YjcwYzdlNmY2NzY0ZDUwZDBlIiwib3BlblRva2VuSWQiOiI2MGViZTUzZTdmNGY0ODIzZWI1NDBhNzYiLCJpc3MiOiJQb29saW5nIiwiYXVkIjoiQWNjZXNzIn0.OlI6NlucEqW60GVXT4-lmgKmgUYILJskdvlvy0DwfHA",
+			"enabled": true
+		},
+		{
+			"key": "tsX5OT",
+			"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI1ZmVhZWNhNzI3MmJhZTA3OGUzZjkyMjUiLCJ1c2VyTmFtZSI6ImF1dG90ZXN0cytUQytYNUBkZXZsb2dpY3MucnUiLCJjb21wYW55SWQiOiI1YjdjMjdlZWQ5ZmQ1NTM3MjQwMzNiMjAiLCJvcGVuVG9rZW5JZCI6IjYwZWJlNTY4N2Y0ZjQ4MjNlYjU0MGE3NyIsImlzcyI6IlBvb2xpbmciLCJhdWQiOiJBY2Nlc3MifQ.iTNE9faHOUfxQpa5nvvTpfv7n2s-nzx4WkpBWQv9_L0",
+			"enabled": true
+		},
+		{
+			"key": "badOT",
+			"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI1YjIyMzY3Mzk5NGY1ZDFiZTRlNTViNjEiLCJ1c2VyTmFtZSI6ImpqdGVzdEBkZXZsb2dpY3MucnUiLCJjb21wYW55SWQiOiI1YjA2YzViNzBjN2U2ZjY3NjRkNTBkMTMiLCJvcGVuVG9rZW5JZCI6IjYwNTFiMzIwYzUxZWI3N2JiY2FjOWJlYyIsImlzcyI6IlBvb2xpbmciLCJhdWQiOiJBY2Nlc3MifQ._AyTb11gIPiULYLEfUiEgqkrgTOTjlGZoKhYfC2GdRw",
+			"enabled": true
+		},
+		{
+			"key": "MoscowShippingRegion",
+			"value": "5bf87204dc28430b4422a7f9",
+			"enabled": true
+		},
+		{
+			"key": "FMCarrier",
+			"value": "5b06c5b70c7e6f6764d50d0f",
+			"enabled": true
+		},
+		{
+			"key": "TanderClient",
+			"value": "5b06c5b70c7e6f6764d50d0e",
+			"enabled": true
+		},
+		{
+			"key": "unloadingWarehouseId",
+			"value": "5b23dfcccd1a2640b4de30bc",
+			"enabled": true
+		},
+		{
+			"key": "DmitrovUnloadingWarehouse",
+			"value": "5b23dfcccd1a2640b4de30bc",
+			"enabled": true
+		},
+		{
+			"key": "NovgorodUnloadingWarehouse",
+			"value": "5b23dfcccd1a2640b4de30bf",
+			"enabled": true
+		},
+		{
+			"key": "VolgogradUnloadingWarehouse",
+			"value": "5b23dfcccd1a2640b4de30b7",
+			"enabled": true
+		},
+		{
+			"key": "IvanovoUnloadingWarehouse",
+			"value": "5b23dfcccd1a2640b4de30b9",
+			"enabled": true
+		},
+		{
+			"key": "KirovUnloadingWarehouse",
+			"value": "5b23dfcccd1a2640b4de30bb",
+			"enabled": true
+		},
+		{
+			"key": "KolomnaUnloadingWarehouse",
+			"value": "5b23dfcccd1a2640b4de30d2",
+			"enabled": true
+		},
+		{
+			"key": "ItecoCarrier",
+			"value": "5bbfc399cee38529ac596891",
+			"enabled": true
+		},
+		{
+			"key": "OrelUnloadingWarehouse",
+			"value": "5b23dfcccd1a2640b4de30c3",
+			"enabled": true
+		},
+		{
+			"key": "YaroslavlUnloadingWarehouse",
+			"value": "5b23dfcccd1a2640b4de30d1",
+			"enabled": true
+		}
+	],
+	"name": "Globals",
+	"_postman_variable_scope": "globals",
+	"_postman_exported_at": "2021-12-19T21:02:13.546Z",
+	"_postman_exported_using": "Postman/9.5.0"
+}

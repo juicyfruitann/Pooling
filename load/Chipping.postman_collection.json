@@ -1,0 +1,209 @@
+{
+	"info": {
+		"_postman_id": "883f27d8-1140-4238-93d1-63c7a7d42a1e",
+		"name": "Chipping",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Chipping",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"var requestsCount = 10\r",
+							"\r",
+							"var glns = [\r",
+							"    \"4607164992248\",\r",
+							"    \"4607164991302\",\r",
+							"    \"4607164990138\",\r",
+							"    \"4607164992682\",\r",
+							"    \"4607164992224\",\r",
+							"    \"4607164992231\",\r",
+							"    \"4607164990121\",\r",
+							"    \"4607164990008\",\r",
+							"    \"4607164990046\",\r",
+							"    \"4680328204937\",\r",
+							"    \"4607164992095\",\r",
+							"    \"4607164990152\",\r",
+							"    \"4680328204951\",\r",
+							"    \"4607164990114\",\r",
+							"    \"4680328001482\",\r",
+							"    \"4607164990145\",\r",
+							"    \"4680328302350\",\r",
+							"    \"4607164990183\",\r",
+							"    \"4607164992484\",\r",
+							"    \"4607164990053\",\r",
+							"    \"4607164990091\",\r",
+							"    \"4680328204920\",\r",
+							"    \"4680328343216\",\r",
+							"    \"4607164990077\",\r",
+							"    \"4680328014000\",\r",
+							"    \"4680328204944\",\r",
+							"    \"4680328256158\",\r",
+							"    \"4680328302343\",\r",
+							"    \"4607164990015\",\r",
+							"    \"4680328180033\",\r",
+							"    \"4607164990084\",\r",
+							"    \"4607164990107\",\r",
+							"    \"4607164990022\",\r",
+							"    \"4607164992286\",\r",
+							"    \"4607164990176\",\r",
+							"    \"4680328537615\",\r",
+							"    \"4607164991432\",\r",
+							"    \"4607164992675\",\r",
+							"    \"4607164992743\",\r",
+							"    \"4680328461606\"\r",
+							"]\r",
+							"\r",
+							"var consignorCodes = [\r",
+							"    \"81\",\r",
+							"    \"980229\",\r",
+							"    \"72\",\r",
+							"    \"5800000186\",\r",
+							"    \"698920\",\r",
+							"    \"978670\",\r",
+							"    \"5200000052\",\r",
+							"    \"979497\",\r",
+							"    \"778329\",\r",
+							"    \"978822\",\r",
+							"    \"5200000453\",\r",
+							"    \"7700002170\",\r",
+							"    \"7700001268\",\r",
+							"    \"7700002053\",\r",
+							"    \"778535\",\r",
+							"    \"979529\",\r",
+							"    \"5000001103\",\r",
+							"    \"5200000194\",\r",
+							"    \"7700002652\",\r",
+							"    \"789168\",\r",
+							"    \"1100000110\",\r",
+							"    \"448976\",\r",
+							"    \"7800000198\",\r",
+							"    \"7700003503\",\r",
+							"    \"7700004281\",\r",
+							"    \"2500000024\",\r",
+							"    \"7800000088\",\r",
+							"    \"408681\",\r",
+							"    \"7700003391\",\r",
+							"    \"2300001864\",\r",
+							"    \"5000000396\",\r",
+							"    \"7700003527\",\r",
+							"    \"778307\",\r",
+							"    \"789795\"\r",
+							"]\r",
+							"\r",
+							"var requestBody = [];\r",
+							"\r",
+							"for (var i = 0; i < requestsCount; i++) {\r",
+							"    requestBody.push({\r",
+							"        \"consignorCode\": _.shuffle(consignorCodes)[0],\r",
+							"        \"dcName\": \"AAA\",\r",
+							"        \"gln\": _.shuffle(glns)[0],\r",
+							"        \"consignorName\": \"BBB\",\r",
+							"        \"orderDate\": _.random(1, 15).toString() + \".12.2021\",\r",
+							"        \"deliveryDate\": _.random(16, 30).toString() + \".12.2021\",\r",
+							"        \"orderNumber\": _.random(1, 9).toString() + \"A\" + _.random(10000000, 99999999).toString() + i,\r",
+							"        \"skuNumber\": _.random(1, 9).toString(),\r",
+							"        \"palletCount\": _.random(1, 99).toString() + \",\" + _.random(1, 99).toString(),\r",
+							"        \"boxCount\": _.random(1, 99).toString() + \",\" + _.random(1, 99).toString(),\r",
+							"        \"weight\": _.random(1, 99).toString() + \",\" + _.random(1, 99).toString()\r",
+							"    });\r",
+							"}\r",
+							"postman.setEnvironmentVariable('requestBody', JSON.stringify(requestBody));"
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Check status code and responseTime\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(35000);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"user-agent": true,
+					"accept": true,
+					"accept-encoding": true,
+					"content-type": true
+				}
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{tsTanderOT}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json-patch+json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{{requestBody}}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/api/v1/client/requests",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"client",
+						"requests"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}
